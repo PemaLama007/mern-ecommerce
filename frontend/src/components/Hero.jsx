@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative bg-hero bg-center bg-no-repeat h-screen w-full">
+    <section className="relative bg-hero bg-cover bg-center bg-no-repeat h-screen w-full pb-5">
       <div className="max_padd_container relative top-32 xs:top-22">
         <h1 className="h1 capitalize max-w-[37rem]">
           Digital Shopping Hub Junction
@@ -16,7 +16,7 @@ const Hero = () => {
           earum perspiciatis, nulla recusandae saepe necessitatibus id. Quae at
           rem eius quis. Veritatis, repellat?
         </p>
-        <div className="flexStart !items-center gap-x-4 my-10">
+        <div className="flexStart !items-center gap-x-4 my-3">
           <div className="!regular-24 flexCenter gap-x-3">
             <FaStar />
             <FaStar />

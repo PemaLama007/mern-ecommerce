@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import Navbar from './Navbar'
@@ -8,11 +8,13 @@ import { FaOpencart } from 'react-icons/fa'
 import logo from "../assets/logo.svg"
 import logout from "../assets/logout.svg"
 import user from "../assets/user.svg"
+import { ShopContext } from '../Context/ShopContext'
 
 const Header = () => {
 
     const [menuOpened, setMenuopend] = useState(false);
     const toggleMenu = () => setMenuopend(!menuOpened);
+    const {getTotalCartItems} = useContext(ShopContext);
 
   return (
     <header className='fixed top-0 left-0 m-auto
@@ -32,7 +34,7 @@ const Header = () => {
             {/* buttons */}
             <div className='flexBetween sm:gap-x-2 bold-16'>
                 {!menuOpened? (
-                <MdMenu className='md-hidden cursor-pointer hover:text-secondary mr-2 p-1 ring-1 ring-slate-900/30 h-8 w-8 
+                <MdMenu className='md:hidden cursor-pointer hover:text-secondary mr-2 p-1 ring-1 ring-slate-900/30 h-8 w-8 
                 rounded-full' onClick={toggleMenu} />
                 ) : (
                 <MdClose className='md-hidden cursor-pointer hover:text-secondary mr-2 p-1 ring-1 ring-slate-900/30 h-8 w-8 
@@ -41,9 +43,9 @@ const Header = () => {
                     <NavLink to={"cart-page"} className={"flex"}>
                         <FaOpencart className="p-1 h-8 w-8 ring-slate-900/30 ring-1 rounded-full"/>
                         <span className='relative flexCenter w-5 h-5 rounded-full
-                        bg-secondary text-white medium-14 -top-2 left-[-10px]'>0</span>
+                        bg-secondary text-white medium-14 -top-2 left-[-10px]'>{getTotalCartItems()}</span>
                     </NavLink>
-                    <NavLink to={'logout'} className={"btn_secondary_rounded flexCenter gap-x-2 medium-16"}><img src={ logout } alt='logoutIcon' height={19} width={19} />Logout </NavLink>
+                    {/* <NavLink to={'logout'} className={"btn_secondary_rounded flexCenter gap-x-2 medium-16"}><img src={ logout } alt='logoutIcon' height={19} width={19} />Logout </NavLink> */}
                     <NavLink to={'login'} className={"btn_secondary_rounded flexCenter gap-x-2 medium-16"}> <img src={user} alt="userIcon" height={19} width={19}/>Login</NavLink>
                 </div>
             </div>
